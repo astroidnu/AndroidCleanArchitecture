@@ -1,0 +1,216 @@
+ext {
+
+    /**
+     * Library Version
+     * */
+
+    sdkVersion = 27
+    supportLibVersion  = '27.1.1'
+    multidexVersion = '1.0.1'
+    retrofitVersion ='2.3.0'
+    okhttpVersion = '3.4.1'
+    firebaseVersion = '12.0.1'
+    gsonVersion = '2.7'
+    rxJavaVersion = '2.1.0'
+    rxAndroidVersion = '2.0.1'
+    daggerVersion = '2.11'
+    kotlinVersion = '1.1.51'
+    butterknifeVersion = '8.6.0'
+    espressoVersion = '3.0.1'
+    mockitoVersion = '2.10.0'
+    dexmakerVersion = '1.2'
+    mockWebserverVersion = '3.6.0'
+    jUnitVersion = '4.12'
+    roboelectricVersion = '3.3.2'
+    roboshadowVersion = '3.0'
+    roomVersion='1.0.0-beta1'
+    crashlyticsVersion='2.8.0@aar'
+    debugdbVersion='1.0.1'
+    pinviewVersion='1.1.0'
+    aviVersion='2.1.3'
+    picassoVersion='2.71828'
+    leakcanaryVersion='1.5.4'
+    constraintLayoutVersion='1.0.2'
+    googleServiceVersion = '3.2.1'
+    fabricToolsVersion = '1.24.4'
+    firebasePluginVersion = '1.1.5'
+    jobDispatcherVersion = '0.8.1'
+    greenDaoVersion = '3.2.2'
+    ankoVersion = '0.10.1'
+    androidTestVersion = '0.50'
+    bottomBarVersion = '2.3.1'
+    saripaarVersion = '2.0.3'
+    besliderVersion = '1.0.1'
+    installReferrerVersion = '1.0'
+    appsFlyerVersion = '4+@aar'
+    tedPermissionVersion = '2.1.0'
+    appseeVersion = '2.3.4@aar'
+    fabricSDKVersion = '1.4.2@aar'
+    firestoreVersion = '12.0.1'
+
+    /**
+     * Library Package name
+     * */
+
+    supportPackage = 'com.android.support'
+    constraintLayoutPackage = 'com.android.support.constraint'
+    roomPackage = 'android.arch.persistence'
+    firebasePackage = 'com.google.firebase'
+    googleGmsPackage = 'com.google.android.gms'
+    jobDispatcherPackage = 'com.firebase'
+    okHttpPackage = 'com.squareup.okhttp3'
+    rxJavaPackage = 'io.reactivex.rxjava2'
+    daggerPackage = 'com.google.dagger'
+    butterKnifePackage = 'com.jakewharton'
+    gsonPackage = 'com.google.code.gson'
+    fabricPackage = 'com.crashlytics.sdk.android'
+    debugDBPackage = 'com.amitshekhar.android'
+    pinViewPackage = 'com.chaos.view'
+    aviPackage = 'com.wang.avi'
+    picasoPackage = 'com.squareup.picasso'
+    leakCanaryPackage = 'com.squareup.leakcanary'
+    fabricToolsPackage = 'io.fabric.tools'
+    retrofitPackage = 'com.squareup.retrofit2'
+    greenDaoPackage = 'org.greenrobot'
+    ankoPackage = 'org.jetbrains.anko'
+    espressoPackage = 'com.android.support.test.espresso'
+    mockitoPackage = 'org.mockito'
+    jUnitPackage = 'junit'
+    androidTestPackage = 'com.android.support.test'
+    bottomBarPackage = 'com.roughike'
+    saripaarPackage = 'com.mobsandgeeks'
+    tunaikuPackage = 'com.github.tunaiku'
+    installReffererPackage = 'com.android.installreferrer'
+    appsFlyerPackage = 'com.appsflyer'
+    tedPermissionPackage = 'gun0912.ted'
+    appseePackage = 'com.appsee'
+    fabricSDKPackage = 'io.fabric.sdk.android'
+
+    /**
+     * List of Android Support Dependencies
+     * */
+
+    supportDependencies = [
+            appcompatv7 : buildDependency(supportPackage, 'appcompat-v7', supportLibVersion),
+            design      : buildDependency(supportPackage, 'design', supportLibVersion),
+            supportv4   : buildDependency(supportPackage, 'support-v4', supportLibVersion),
+            recycleview   : buildDependency(supportPackage, 'recyclerview-v7', supportLibVersion),
+            cardview   : buildDependency(supportPackage, 'cardview-v7', supportLibVersion),
+            customtabs  : buildDependency(supportPackage, 'customtabs', supportLibVersion),
+            multidex   : buildDependency(supportPackage, 'multidex', multidexVersion),
+            contraintLayout   : buildDependency(constraintLayoutPackage, 'constraint-layout', constraintLayoutVersion)
+    ]
+
+    /**
+     * List of Firebase Dependencies
+     * */
+
+    firebaseDependencies = [
+            core : buildDependency(firebasePackage, 'firebase-core', firebaseVersion),
+            messaging : buildDependency(firebasePackage, 'firebase-messaging', firebaseVersion),
+            config : buildDependency(firebasePackage, 'firebase-config', firebaseVersion),
+            auth : buildDependency(firebasePackage, 'firebase-auth', firebaseVersion),
+            database : buildDependency(firebasePackage, 'firebase-database', firebaseVersion),
+            perf : buildDependency(firebasePackage, 'firebase-perf', firebaseVersion),
+            jobdispatcher : buildDependency(jobDispatcherPackage, 'firebase-jobdispatcher', jobDispatcherVersion),
+            firebasePlugin : buildDependency(firebasePackage, 'firebase-plugins', firebasePluginVersion),
+            firestore : buildDependency(firebasePackage, 'firebase-firestore', firestoreVersion)
+    ]
+
+    /**
+     * List of Retrofit 2 Dependencies
+     * */
+
+    retrofitDependencies = [
+            retrofit    : buildDependency(retrofitPackage, 'retrofit', retrofitVersion),
+            converterGson   : buildDependency(retrofitPackage, 'converter-gson', retrofitVersion),
+            rxAdapterJava   : buildDependency(retrofitPackage, 'adapter-rxjava2', retrofitVersion)
+    ]
+
+    /**
+     * List of okhttp 3 Dependencies
+     * */
+
+    okhttpDependencies = [
+            okhttp    : buildDependency(okHttpPackage, 'okhttp', okhttpVersion),
+            loggingInterceptor   : buildDependency(okHttpPackage, 'logging-interceptor', okhttpVersion)
+    ]
+
+    /**
+     * List of RxJava 2 Dependencies
+     * */
+
+    rxDependencies = [
+            rxAndroid: buildDependency(rxJavaPackage, 'rxandroid', rxAndroidVersion),
+            rxJava   : buildDependency(rxJavaPackage,'rxjava',rxJavaVersion)
+    ]
+
+    /**
+     * List of Dagger 2 Dependencies
+     * */
+
+    daggerDependencies = [
+            dagger: buildDependency(daggerPackage, 'dagger', daggerVersion),
+            daggerCompiler   : buildDependency(daggerPackage,'dagger-compiler',daggerVersion),
+            daggerAndroid   : buildDependency(daggerPackage,'dagger-android',daggerVersion),
+            daggerAndroidSupport   : buildDependency(daggerPackage,'dagger-android-support',daggerVersion),
+            daggerAndroidProcessor   : buildDependency(daggerPackage,'dagger-android-processor',daggerVersion)
+    ]
+
+    /**
+     * List of leak canary Dependencies
+     * */
+
+    leakCanaryDependencies = [
+            leakCanary: buildDependency(leakCanaryPackage, 'leakcanary-android', leakcanaryVersion),
+            leakCanaryNoOp   : buildDependency(leakCanaryPackage,'leakcanary-android-no-op',leakcanaryVersion)
+    ]
+
+    /**
+     * List of anko layout Dependencies
+     * */
+
+    ankoLayoutDependencies = [
+            ankoLayout: buildDependency(ankoPackage, 'anko', ankoVersion),
+            ankoCommons: buildDependency(ankoPackage, 'anko-commons', ankoVersion)
+    ]
+
+    /**
+     * List of Espresso Dependencies
+     * */
+
+    espressoDependencies = [
+            espressoCore: buildDependency(espressoPackage, 'espresso-core', espressoVersion),
+            espressoIntents: buildDependency(espressoPackage, 'espresso-intents', espressoVersion),
+            espressoWeb: buildDependency(espressoPackage, 'espresso-web', espressoVersion)
+    ]
+
+    fabricCrashlytics = buildDependency(fabricPackage, 'crashlytics', crashlyticsVersion)
+    debugDB = buildDependency(debugDBPackage, 'debug-db', debugdbVersion)
+    pinView = buildDependency(pinViewPackage, 'pinview', pinviewVersion)
+    aviLoadingIndicator = buildDependency(aviPackage, 'library', aviVersion)
+    picasso = buildDependency(picasoPackage, 'picasso', picassoVersion)
+    fabricTools = buildDependency(fabricToolsPackage, 'gradle', fabricToolsVersion)
+    googleService =  buildDependency(googleGmsPackage, 'google-services', googleServiceVersion)
+    greenDao = buildDependency(greenDaoPackage, 'greendao', greenDaoVersion)
+    mockito = buildDependency(mockitoPackage, 'mockito-core', mockitoVersion)
+    junit = buildDependency(jUnitPackage, 'junit', jUnitVersion)
+    androidRunner = buildDependency(androidTestPackage, 'runner', androidTestVersion)
+    androidRules = buildDependency(androidTestPackage, 'rules', androidTestVersion)
+    bottomBar = buildDependency(bottomBarPackage, 'bottom-bar', bottomBarVersion)
+    saripaarValidation = buildDependency(saripaarPackage, 'android-saripaar', saripaarVersion)
+    beslider = buildDependency(tunaikuPackage,'beslider',besliderVersion)
+    installRefferer =  buildDependency(installReffererPackage,'installreferrer',installReferrerVersion)
+    appsFlyer = buildDependency(appsFlyerPackage, 'af-android-sdk', appsFlyerVersion)
+    tedPermission = buildDependency(tedPermissionPackage, 'tedpermission-rx2', tedPermissionVersion)
+    appsee = buildDependency(appseePackage, 'appsee-android', appseeVersion)
+    fabricSDK = buildDependency(fabricSDKPackage, 'fabric', fabricSDKVersion)
+}
+
+/**
+ * Generate Build Dependency Package Name and version
+ * */
+
+static String buildDependency(String pack, String dependency, String version) {
+    return "${pack}:${dependency}:${version}"
+}

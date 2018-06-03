@@ -4,30 +4,101 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 27
+    flavorDimensions "default"
+
     defaultConfig {
         applicationId "com.scoproject.androidcleanarchitecture"
         minSdkVersion 16
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+
     buildTypes {
+        debug {
+            minifyEnabled false
+            debuggable true
+            buildConfigField "String", "API_KEY", apiKey
+            buildConfigField "String", "BASE_URL", baseUrl
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+
+    //Testing Dependencies
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    // Android runner and rules support
+    androidTestImplementation(androidRunner) {
+        exclude module: 'support-annotations'
+    }
+    androidTestImplementation(androidRules) {
+        exclude module: 'support-annotations'
+    }
+
+    // Espresso support
+    androidTestImplementation(espressoDependencies.espressoCore) {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+
+    // add this for intent mocking support
+    androidTestImplementation(espressoDependencies.espressoIntents) {
+        exclude module: 'support-annotations'
+    }
+
+    // add this for webview testing support
+    androidTestImplementation espressoDependencies.espressoWeb
+    androidTestImplementation mockito
+    testImplementation mockito
+    testImplementation "com.nhaarman:mockito-kotlin-kt1.1:1.5.0"
+    testImplementation 'com.squareup.okhttp3:mockwebserver:3.9.1'
+
+    //Kotlin Dependencies Kapt
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    //Support Dependencies
+    implementation supportDependencies.appcompatv7
+    implementation supportDependencies.design
+    implementation supportDependencies.supportv4
+    implementation supportDependencies.recycleview
+    implementation supportDependencies.cardview
+    implementation supportDependencies.customtabs
+    implementation supportDependencies.contraintLayout
+    implementation supportDependencies.multidex
+
+    //RxJava 2
+    implementation rxDependencies.rxJava
+    implementation rxDependencies.rxAndroid
+
+    //Retrofit Dependencies
+    implementation retrofitDependencies.retrofit
+    implementation retrofitDependencies.converterGson
+    implementation retrofitDependencies.rxAdapterJava
+
+    //Okhttp Dependencies
+    implementation okhttpDependencies.okhttp
+    implementation okhttpDependencies.loggingInterceptor
+
+    //Dagger Dependencies
+    implementation daggerDependencies.dagger
+    implementation daggerDependencies.daggerAndroidSupport
+    implementation daggerDependencies.daggerAndroid
+    kapt daggerDependencies.daggerCompiler
+    kapt daggerDependencies.daggerAndroidProcessor
+
 }
