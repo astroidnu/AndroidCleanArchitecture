@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AndroidCleanArchitecture</string>
+    <string name="tag_poster_path">Movie Poster Path</string>
 </resources>

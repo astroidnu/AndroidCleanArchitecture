@@ -47,6 +47,7 @@ ext {
     appseeVersion = '2.3.4@aar'
     fabricSDKVersion = '1.4.2@aar'
     firestoreVersion = '12.0.1'
+    glideVersion = '4.7.1'
 
     /**
      * Library Package name
@@ -85,6 +86,7 @@ ext {
     tedPermissionPackage = 'gun0912.ted'
     appseePackage = 'com.appsee'
     fabricSDKPackage = 'io.fabric.sdk.android'
+    glidePackage = 'com.github.bumptech.glide'
 
     /**
      * List of Android Support Dependencies
@@ -205,6 +207,8 @@ ext {
     tedPermission = buildDependency(tedPermissionPackage, 'tedpermission-rx2', tedPermissionVersion)
     appsee = buildDependency(appseePackage, 'appsee-android', appseeVersion)
     fabricSDK = buildDependency(fabricSDKPackage, 'fabric', fabricSDKVersion)
+    glide = buildDependency(glidePackage, 'glide', glideVersion)
+    glideCompiler = buildDependency(glidePackage, 'compiler', glideVersion)
 }
 
 /**

@@ -2,6 +2,7 @@ package com.scoproject.androidcleanarchitecture.di.module
 
 import com.scoproject.androidcleanarchitecture.BuildConfig
 import com.scoproject.androidcleanarchitecture.CleanArchitectureApp
+import com.scoproject.androidcleanarchitecture.data.network.RestService
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
@@ -60,4 +61,9 @@ class NetworkModule (val app: CleanArchitectureApp) {
         return builder.build()
     }
 
+
+    @Provides
+    @Singleton
+    fun restService(retrofit: Retrofit): RestService =
+            retrofit.create(RestService::class.java)
 }
