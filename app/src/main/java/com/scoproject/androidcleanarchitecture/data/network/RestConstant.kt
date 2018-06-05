@@ -14,7 +14,7 @@ object RestConstant {
      * */
 
     const val moviePopular = "${BuildConfig.BASE_URL}movie/popular?$api_key"
-
+    const val movieDetail = "${BuildConfig.BASE_URL}movie/{movie_id}?$api_key"
 
     /**
      * Image Settings
