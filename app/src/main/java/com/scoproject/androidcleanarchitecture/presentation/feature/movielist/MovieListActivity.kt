@@ -2,6 +2,7 @@ package com.scoproject.androidcleanarchitecture.presentation.feature.movielist
 
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
+import android.view.View
 import com.scoproject.androidcleanarchitecture.R
 import com.scoproject.androidcleanarchitecture.data.model.response.MovieList
 import com.scoproject.androidcleanarchitecture.data.network.RestConstant
@@ -21,11 +22,11 @@ import javax.inject.Inject
 
 class MovieListActivity : BaseActivity(), MovieListContract.View {
     @Inject
-    lateinit var mMovieListPresenter: MovieListPresenter
+    lateinit var mPresenter: MovieListPresenter
 
     override fun onActivityReady(savedInstanceState: Bundle?) {
-        mMovieListPresenter.attachView(this)
-        mMovieListPresenter.getMovieList()
+        mPresenter.attachView(this)
+        mPresenter.getMovieList()
     }
 
     override fun onAutoAndroidInjector() {
@@ -36,12 +37,17 @@ class MovieListActivity : BaseActivity(), MovieListContract.View {
         return R.layout.activity_movie_list
     }
 
-    override fun showLoading() {
+    override fun onStop() {
+        super.onStop()
+        mPresenter.detachView()
+    }
 
+    override fun showLoading() {
+        pbMovieList.visibility = View.VISIBLE
     }
 
     override fun hideLoading() {
-
+        pbMovieList.visibility = View.GONE
     }
 
     override fun showMessage(msg: String) {
@@ -52,17 +58,13 @@ class MovieListActivity : BaseActivity(), MovieListContract.View {
         rv_movie_list?.setUp(data, R.layout.item_movie, {
             val fullpath = "${RestConstant.baseImageUrl}${RestConstant.imageSettings.w342}/${it.posterPath}"
             fullpath.loadUriImage(context, iv_image_cover)
-        },{
-            val movieTitle = it.title
-            iv_image_cover.setOnClickListener {
-                movieTitle?.let {
-                    showMessage(it)
-                }
-
+        }, {
+            val movieId = it.id.toString()
+            ll_item_movie.setOnClickListener {
+                mActivityNavigation.goToDetailMoviePage(movieId)
             }
-        },GridLayoutManager(this, 2))
+        }, GridLayoutManager(this, 2))
     }
-
 
 
 }

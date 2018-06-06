@@ -2,8 +2,10 @@ package com.scoproject.androidcleanarchitecture.presentation.ui.base.activity
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.scoproject.androidcleanarchitecture.presentation.ui.base.view.BaseView
+import com.scoproject.androidcleanarchitecture.presentation.ui.base.navigationcontroller.ActivityNavigation
 import com.scoproject.androidcleanarchitecture.presentation.ui.base.presenter.BasePresenter
+import com.scoproject.androidcleanarchitecture.presentation.ui.base.view.BaseView
+import javax.inject.Inject
 
 /**
  * Created by ibnumuzzakkir on 08/05/18.
@@ -12,6 +14,9 @@ import com.scoproject.androidcleanarchitecture.presentation.ui.base.presenter.Ba
  */
 
 abstract class BaseActivity  : AppCompatActivity(), BaseView {
+    @Inject
+    lateinit var mActivityNavigation : ActivityNavigation
+
     private var presenter: BasePresenter<*>? = null
 
     /**

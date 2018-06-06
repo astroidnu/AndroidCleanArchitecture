@@ -6,6 +6,7 @@ import com.scoproject.androidcleanarchitecture.data.repository.MovieRepository
 import com.scoproject.androidcleanarchitecture.di.scope.ActivityScope
 import com.scoproject.androidcleanarchitecture.domain.movielist.MovieListInteractor
 import com.scoproject.androidcleanarchitecture.domain.movielist.MovieListUseCase
+import com.scoproject.androidcleanarchitecture.presentation.ui.base.navigationcontroller.ActivityNavigation
 import dagger.Module
 import dagger.Provides
 
@@ -32,5 +33,7 @@ class MovieListModule {
     @ActivityScope
     fun presenter(movieListUseCase: MovieListUseCase): MovieListPresenter = MovieListPresenter(movieListUseCase)
 
-
+    @Provides
+    @ActivityScope
+    fun navigation(movieListActivity: MovieListActivity) = ActivityNavigation(movieListActivity)
 }

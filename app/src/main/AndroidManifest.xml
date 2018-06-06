@@ -13,12 +13,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.feature.movielist.MovieListActivity">
+        <activity
+            android:label="@string/title_list_movie"
+            android:name=".presentation.feature.movielist.MovieListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/title_detail_movie"
+            android:name=".presentation.feature.moviedetail.MovieDetailActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.scoproject.androidcleanarchitecture.presentation.feature.movielist.MovieListActivity" />
         </activity>
     </application>
 

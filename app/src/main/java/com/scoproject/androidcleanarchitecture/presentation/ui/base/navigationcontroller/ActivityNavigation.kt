@@ -14,11 +14,12 @@ class ActivityNavigation @Inject constructor(val activity : AppCompatActivity) :
      * Go to Detail Movie Page
      * */
 
-    fun goToDetailMoviePage() {
-        activity.startActivity(newIntent(
-                activity,
-                MovieDetailActivity::class.java)
-        )
+    fun goToDetailMoviePage(movieId : String) {
+        var intent = newIntent(activity, MovieDetailActivity::class.java)
+        intent.apply {
+            putExtra(MovieDetailActivity.TAG_MOVIE_ID, movieId)
+        }
+        activity.startActivity(intent)
     }
 
 }

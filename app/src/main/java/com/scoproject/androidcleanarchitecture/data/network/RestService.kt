@@ -4,7 +4,7 @@ import com.scoproject.androidcleanarchitecture.data.model.response.MovieDetail
 import com.scoproject.androidcleanarchitecture.data.model.response.MovieList
 import io.reactivex.Single
 import retrofit2.http.GET
-import retrofit2.http.Header
+import retrofit2.http.Path
 
 /**
  * Created by ibnumuzzakkir on 02/06/18.
@@ -15,5 +15,5 @@ interface RestService {
     fun getPopularMovie(): Single<MovieList.Response>
 
     @GET(RestConstant.movieDetail)
-    fun getPopularMovie(@Header("movie_id") movieId :String): Single<MovieDetail.Response>
+    fun getMovieDetail(@Path("movie_id") movieId :String): Single<MovieDetail.Response>
 }

@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">AndroidCleanArchitecture</string>
     <string name="tag_poster_path">Movie Poster Path</string>
+    <string name="title_detail_movie">Detail Movie</string>
+    <string name="title_list_movie">Movies</string>
+
+    <!--Sample Movie Detail Content-->
+    <string name="sample_movie_title">Deadpool 2</string>
+    <string name="sample_movie_description">Wisecracking mercenary Deadpool battles the evil and powerful Cable and other bad guys to save a boys life</string>
 </resources>

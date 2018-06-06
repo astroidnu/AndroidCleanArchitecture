@@ -6,6 +6,6 @@ package com.scoproject.androidcleanarchitecture.data.model.entity
  */
 data class MovieDetail(
        var movieTitle : String? = null,
-       var moviePosterPath: String? = null,
+       var movieBackDropPath: String? = null,
        var movieDescription : String? = null
 )
