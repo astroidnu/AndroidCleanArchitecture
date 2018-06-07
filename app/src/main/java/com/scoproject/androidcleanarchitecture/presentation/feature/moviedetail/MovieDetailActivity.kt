@@ -17,6 +17,7 @@ import javax.inject.Inject
  */
 
 class MovieDetailActivity : BaseActivity(), MovieDetailContract.View {
+
     companion object {
         val TAG_MOVIE_ID = "movie_id"
     }
@@ -66,7 +67,7 @@ class MovieDetailActivity : BaseActivity(), MovieDetailContract.View {
         fullpath.loadUriImage(this, ivMovieDetail)
     }
 
-    override fun showMessage(msg: String) {
-        showToast(msg)
+    override fun showError() {
+        showToast(resources.getString(R.string.error_get_detail_movie))
     }
 }

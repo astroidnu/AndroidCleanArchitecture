@@ -1,7 +1,7 @@
 package com.scoproject.androidcleanarchitecture.domain.moviedetail
 
 import com.scoproject.androidcleanarchitecture.data.model.entity.MovieDetail
-import io.reactivex.Single
+import io.reactivex.Observable
 
 /**
  * Created by ibnumuzzakkir on 02/06/18.
@@ -9,5 +9,5 @@ import io.reactivex.Single
  */
 
 interface MovieDetailUseCase {
-    fun getMovieDetail(movieId: String): Single<MovieDetail>
+    fun getMovieDetail(movieId: String): Observable<MovieDetail.MovieVO>
 }

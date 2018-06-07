@@ -12,7 +12,7 @@ class MovieDetailContract {
         fun showLoading()
         fun hideLoading()
         fun setupActionBar()
-        fun showMessage(msg: String)
+        fun showError()
         fun setContent(movieTitle: String?, movieDesc: String?, posterUrl: String?)
     }
 

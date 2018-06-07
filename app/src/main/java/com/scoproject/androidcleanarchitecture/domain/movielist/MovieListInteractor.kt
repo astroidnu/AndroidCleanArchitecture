@@ -2,7 +2,7 @@ package com.scoproject.androidcleanarchitecture.domain.movielist
 
 import com.scoproject.androidcleanarchitecture.data.model.response.MovieList
 import com.scoproject.androidcleanarchitecture.data.repository.MovieRepository
-import io.reactivex.Single
+import io.reactivex.Observable
 import javax.inject.Inject
 
 /**
@@ -11,7 +11,7 @@ import javax.inject.Inject
  */
 
 class MovieListInteractor @Inject constructor(private val movieRepository: MovieRepository) : MovieListUseCase {
-    override fun getMovieList(): Single<List<MovieList.Result>> {
+    override fun getMovieList(): Observable<List<MovieList.Result>> {
         return movieRepository.fetchMovies().flatMap { item ->
             val size = item.results?.size ?: 0
             if (size > 0) {
@@ -34,9 +34,9 @@ class MovieListInteractor @Inject constructor(private val movieRepository: Movie
                             releaseDate = it?.releaseDate
                     ))
                 }
-                Single.just(entities)
+                Observable.just(entities)
             } else {
-                Single.just(mutableListOf())
+                Observable.just(mutableListOf())
             }
         }
     }

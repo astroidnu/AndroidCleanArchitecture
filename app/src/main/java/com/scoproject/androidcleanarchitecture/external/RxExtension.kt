@@ -1,5 +1,6 @@
 package com.scoproject.androidcleanarchitecture.external
 
+import io.reactivex.FlowableTransformer
 import  io.reactivex.ObservableTransformer
 import io.reactivex.SingleTransformer
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -14,6 +15,15 @@ fun <T> singleNewThread(): SingleTransformer<T, T> {
 
 fun <T> singleIo(): SingleTransformer<T, T> {
     return SingleTransformer { upstream ->
+        upstream.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+    }
+}
+
+
+
+fun <T> flowableIo(): FlowableTransformer<T, T> {
+    return FlowableTransformer { upstream ->
         upstream.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
     }

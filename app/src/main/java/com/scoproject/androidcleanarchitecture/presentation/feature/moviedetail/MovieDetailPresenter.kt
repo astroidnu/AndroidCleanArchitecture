@@ -22,7 +22,7 @@ class MovieDetailPresenter  @Inject constructor(private val useCase: MovieDetail
                 },{
                     err ->
                     view?.hideLoading()
-                    view?.showMessage(err.message.toString())
+                    view?.showError()
                 }))
 
     }

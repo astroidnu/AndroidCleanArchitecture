@@ -2,6 +2,7 @@ package com.scoproject.androidcleanarchitecture.domain.moviedetail
 
 import com.scoproject.androidcleanarchitecture.data.model.entity.MovieDetail
 import com.scoproject.androidcleanarchitecture.data.repository.MovieRepository
+import io.reactivex.Observable
 import io.reactivex.Single
 import javax.inject.Inject
 
@@ -11,15 +12,12 @@ import javax.inject.Inject
  */
 
 class MovieDetailInteractor @Inject constructor(private val movieRepository: MovieRepository) : MovieDetailUseCase {
-    override fun getMovieDetail(movieId: String): Single<MovieDetail> {
+    override fun getMovieDetail(movieId: String): Observable<MovieDetail.MovieVO> {
         return movieRepository.fetchDetailMovie(movieId).flatMap { item ->
-            val entities = MovieDetail()
-            entities.apply {
-                movieTitle = item.originalTitle
-                movieBackDropPath = item.backdropPath
-                movieDescription = item.overview
-            }
-             Single.just(entities)
+            val entities = MovieDetail.MovieVO(
+                 item.originalTitle,
+                 item.backdropPath, item.overview)
+            Observable.just(entities)
         }
     }
 

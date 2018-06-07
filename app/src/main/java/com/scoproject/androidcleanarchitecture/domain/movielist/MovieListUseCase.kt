@@ -1,7 +1,7 @@
 package com.scoproject.androidcleanarchitecture.domain.movielist
 
 import com.scoproject.androidcleanarchitecture.data.model.response.MovieList
-import io.reactivex.Single
+import io.reactivex.Observable
 
 /**
  * Created by ibnumuzzakkir on 02/06/18.
@@ -9,5 +9,5 @@ import io.reactivex.Single
  */
 
 interface MovieListUseCase {
-    fun getMovieList() : Single<List<MovieList.Result>>
+    fun getMovieList() : Observable<List<MovieList.Result>>
 }
