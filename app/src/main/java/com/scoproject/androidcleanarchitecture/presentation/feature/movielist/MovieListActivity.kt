@@ -5,7 +5,6 @@ import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import com.scoproject.androidcleanarchitecture.R
 import com.scoproject.androidcleanarchitecture.data.model.response.MovieList
-import com.scoproject.androidcleanarchitecture.data.network.RestConstant
 import com.scoproject.androidcleanarchitecture.external.loadUriImage
 import com.scoproject.androidcleanarchitecture.external.setUp
 import com.scoproject.androidcleanarchitecture.external.showSnackBar
@@ -56,8 +55,7 @@ class MovieListActivity : BaseActivity(), MovieListContract.View {
 
     override fun setupAdapter(data: List<MovieList.Result>) {
         rv_movie_list?.setUp(data, R.layout.item_movie, {
-            val fullpath = "${RestConstant.baseImageUrl}${RestConstant.imageSettings.w342}/${it.posterPath}"
-            fullpath.loadUriImage(context, iv_image_cover)
+            it.fullpathMovieList.loadUriImage(context, iv_image_cover)
         }, {
             val movieId = it.id.toString()
             ll_item_movie.setOnClickListener {

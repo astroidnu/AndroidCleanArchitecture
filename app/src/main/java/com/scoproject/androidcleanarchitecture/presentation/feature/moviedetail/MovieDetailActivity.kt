@@ -3,7 +3,6 @@ package com.scoproject.androidcleanarchitecture.presentation.feature.moviedetail
 import android.os.Bundle
 import android.view.View
 import com.scoproject.androidcleanarchitecture.R
-import com.scoproject.androidcleanarchitecture.data.network.RestConstant
 import com.scoproject.androidcleanarchitecture.external.loadUriImage
 import com.scoproject.androidcleanarchitecture.external.showToast
 import com.scoproject.androidcleanarchitecture.presentation.ui.base.activity.BaseActivity
@@ -63,8 +62,7 @@ class MovieDetailActivity : BaseActivity(), MovieDetailContract.View {
     override fun setContent(movieTitle: String?, movieDesc: String?, posterUrl: String?) {
         tvMovieDescription.text = movieDesc
         tvMovieTitle.text = movieTitle
-        val fullpath = "${RestConstant.baseImageUrl}${RestConstant.imageSettings.w1280}/$posterUrl"
-        fullpath.loadUriImage(this, ivMovieDetail)
+        posterUrl?.loadUriImage(this, ivMovieDetail)
     }
 
     override fun showError() {

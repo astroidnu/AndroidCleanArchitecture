@@ -1,6 +1,7 @@
 package com.scoproject.androidcleanarchitecture.data.model.response
 
 import com.google.gson.annotations.SerializedName
+import com.scoproject.androidcleanarchitecture.data.network.RestConstant
 
 /**
  * Created by ibnumuzzakkir on 03/06/18.
@@ -28,8 +29,10 @@ sealed class MovieList {
             @SerializedName("backdrop_path") val backdropPath: String? = null,
             @SerializedName("adult") val adult: Boolean? = null,
             @SerializedName("overview") val overview: String? = null,
-            @SerializedName("release_date") val releaseDate: String? = null
-    )
+            @SerializedName("release_date") val releaseDate: String? = null){
 
+             val fullpathMovieList: String = "${RestConstant.baseImageUrl}${RestConstant.imageSettings.w342}/$posterPath"
+
+    }
 
 }

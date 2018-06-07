@@ -18,7 +18,7 @@ class MovieDetailPresenter  @Inject constructor(private val useCase: MovieDetail
         view?.showLoading()
         addDisposable(useCase.getMovieDetail(movieId)
                 .subscribe ({ data ->
-                    view?.setContent(data.movieTitle,data.movieDescription,data.movieBackDropPath)
+                    view?.setContent(data.movieTitle,data.movieDescription,data.fullPathMovieDetail)
                     view?.hideLoading()
                 },{
                     _ ->
