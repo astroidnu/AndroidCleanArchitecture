@@ -7,6 +7,7 @@ import com.scoproject.androidcleanarchitecture.di.scope.ActivityScope
 import com.scoproject.androidcleanarchitecture.domain.movielist.MovieListInteractor
 import com.scoproject.androidcleanarchitecture.domain.movielist.MovieListUseCase
 import com.scoproject.androidcleanarchitecture.presentation.ui.base.navigationcontroller.ActivityNavigation
+import com.scoproject.weatherapp.utils.AppSchedulerProvider
 import dagger.Module
 import dagger.Provides
 
@@ -23,7 +24,7 @@ class MovieListModule {
 
     @Provides
     @ActivityScope
-    fun repository(restService: RestService): MovieRepository = MovieDataStore(restService)
+    fun repository(restService: RestService, schedulerProvider: AppSchedulerProvider): MovieRepository = MovieDataStore(restService,schedulerProvider)
 
     @Provides
     @ActivityScope
@@ -31,7 +32,8 @@ class MovieListModule {
 
     @Provides
     @ActivityScope
-    fun presenter(movieListUseCase: MovieListUseCase): MovieListPresenter = MovieListPresenter(movieListUseCase)
+    fun presenter(movieListUseCase: MovieListUseCase, schedulerProvider: AppSchedulerProvider): MovieListPresenter
+            = MovieListPresenter(movieListUseCase, schedulerProvider)
 
     @Provides
     @ActivityScope

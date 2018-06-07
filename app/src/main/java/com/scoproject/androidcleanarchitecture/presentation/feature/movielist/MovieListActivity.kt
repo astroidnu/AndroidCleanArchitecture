@@ -50,8 +50,8 @@ class MovieListActivity : BaseActivity(), MovieListContract.View {
         pbMovieList.visibility = View.GONE
     }
 
-    override fun showMessage(msg: String) {
-        cl_movie_list.showSnackBar(msg)
+    override fun showError() {
+        cl_movie_list.showSnackBar(resources.getString(R.string.error_get_list_movie))
     }
 
     override fun setupAdapter(data: List<MovieList.Result>) {

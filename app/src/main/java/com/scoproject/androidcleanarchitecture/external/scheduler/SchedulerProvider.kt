@@ -1,12 +1,8 @@
-package com.scoproject.androidcleanarchitecture.external
+package com.scoproject.androidcleanarchitecture.external.scheduler
 
 import io.reactivex.Scheduler
 
-/**
- * Created by ibnumuzzakkir on 08/05/18.
- * Android Engineer
- * SCO Project
- */
+
 interface SchedulerProvider {
     fun ui(): Scheduler
     fun computation(): Scheduler

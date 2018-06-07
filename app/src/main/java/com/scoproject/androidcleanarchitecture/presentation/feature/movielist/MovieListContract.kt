@@ -12,7 +12,7 @@ class MovieListContract {
     interface View : BaseView {
         fun showLoading()
         fun hideLoading()
-        fun showMessage(msg: String)
+        fun showError()
         fun setupAdapter(data : List<MovieList.Result>)
     }
 

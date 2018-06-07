@@ -1,6 +1,7 @@
 package com.scoproject.androidcleanarchitecture.presentation.feature.moviedetail
 
 import com.scoproject.androidcleanarchitecture.domain.moviedetail.MovieDetailUseCase
+import com.scoproject.androidcleanarchitecture.external.scheduler.SchedulerProvider
 import com.scoproject.androidcleanarchitecture.presentation.ui.base.presenter.BasePresenter
 import javax.inject.Inject
 
@@ -9,8 +10,8 @@ import javax.inject.Inject
  * Mobile Engineer
  */
 
-class MovieDetailPresenter  @Inject constructor(private val useCase: MovieDetailUseCase):
-        BasePresenter<MovieDetailContract.View>(), MovieDetailContract.UserActionListener  {
+class MovieDetailPresenter  @Inject constructor(private val useCase: MovieDetailUseCase,  scheduler : SchedulerProvider):
+        BasePresenter<MovieDetailContract.View>(scheduler), MovieDetailContract.UserActionListener  {
 
 
     override fun getMovieDetail(movieId: String) {
@@ -20,7 +21,7 @@ class MovieDetailPresenter  @Inject constructor(private val useCase: MovieDetail
                     view?.setContent(data.movieTitle,data.movieDescription,data.movieBackDropPath)
                     view?.hideLoading()
                 },{
-                    err ->
+                    _ ->
                     view?.hideLoading()
                     view?.showError()
                 }))

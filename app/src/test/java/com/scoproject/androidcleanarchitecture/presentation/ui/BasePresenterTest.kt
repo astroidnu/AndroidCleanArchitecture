@@ -4,6 +4,8 @@ import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.scoproject.androidcleanarchitecture.presentation.ui.base.presenter.BasePresenter
 import com.scoproject.androidcleanarchitecture.presentation.ui.base.view.BaseView
+import com.scoproject.weatherapp.util.TestSchedulerProvider
+import io.reactivex.schedulers.TestScheduler
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -16,10 +18,13 @@ import org.junit.Test
 class BasePresenterTest {
     private lateinit var basePresenter: BasePresenter<BaseView>
     private val view: BaseView = mock()
+    private lateinit var mTestScheduler: TestScheduler
 
     @Before
     fun setUp() {
-        basePresenter = BasePresenter()
+        mTestScheduler = TestScheduler()
+        val testSchedulerProvider = TestSchedulerProvider(mTestScheduler)
+        basePresenter = BasePresenter(testSchedulerProvider)
     }
 
     @Test

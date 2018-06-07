@@ -3,7 +3,7 @@ package com.scoproject.androidcleanarchitecture.data.repository
 import com.scoproject.androidcleanarchitecture.data.model.response.MovieDetail
 import com.scoproject.androidcleanarchitecture.data.model.response.MovieList
 import com.scoproject.androidcleanarchitecture.data.network.RestService
-import com.scoproject.androidcleanarchitecture.external.observableIo
+import com.scoproject.androidcleanarchitecture.external.scheduler.SchedulerProvider
 import io.reactivex.Observable
 import javax.inject.Inject
 
@@ -12,13 +12,17 @@ import javax.inject.Inject
  * Mobile Engineer
  */
 
-class MovieDataStore @Inject constructor(private val service: RestService) : MovieRepository {
+class MovieDataStore @Inject constructor(private val service: RestService, val scheduler : SchedulerProvider) : MovieRepository {
 
     override fun fetchMovies(): Observable<MovieList.Response> {
-        return service.getPopularMovie().compose(observableIo())
+        return service.getPopularMovie()
+                .subscribeOn(scheduler.io())
+                .observeOn(scheduler.ui())
     }
 
     override fun fetchDetailMovie(movieId :String): Observable<MovieDetail.Response> {
-        return service.getMovieDetail(movieId).compose(observableIo())
+        return service.getMovieDetail(movieId)
+                .subscribeOn(scheduler.io())
+                .observeOn(scheduler.ui())
     }
 }

@@ -1,5 +1,6 @@
 package com.scoproject.androidcleanarchitecture.presentation.ui.base.presenter
 
+import com.scoproject.androidcleanarchitecture.external.scheduler.SchedulerProvider
 import com.scoproject.androidcleanarchitecture.presentation.ui.base.view.BaseView
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -11,7 +12,7 @@ import java.lang.ref.WeakReference
  * SCO Project
  */
 
-open class BasePresenter<V : BaseView> : IBasePresenter<V> {
+open class BasePresenter<V : BaseView> constructor(var scheduler : SchedulerProvider): IBasePresenter<V> {
 
 
     private val mCompositeDisposable by lazy {

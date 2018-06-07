@@ -8,5 +8,6 @@
     <string name="sample_movie_title">Deadpool 2</string>
     <string name="sample_movie_description">Wisecracking mercenary Deadpool battles the evil and powerful Cable and other bad guys to save a boys life</string>
 
-    <string name="error_get_detail_movie">Cannot get Detail Movie</string>
+    <string name="error_get_detail_movie">Cannot Get Detail Movie</string>
+    <string name="error_get_list_movie">Cannot Get List Movie</string>
 </resources>

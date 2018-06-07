@@ -1,6 +1,7 @@
 package com.scoproject.androidcleanarchitecture.presentation.feature.movielist
 
 import com.scoproject.androidcleanarchitecture.domain.movielist.MovieListUseCase
+import com.scoproject.androidcleanarchitecture.external.scheduler.SchedulerProvider
 import com.scoproject.androidcleanarchitecture.presentation.ui.base.presenter.BasePresenter
 import javax.inject.Inject
 
@@ -9,8 +10,9 @@ import javax.inject.Inject
  * Mobile Engineer
  */
 
-class MovieListPresenter @Inject constructor(private val movieListUseCase: MovieListUseCase) :
-        BasePresenter<MovieListContract.View>(), MovieListContract.UserActionListener {
+class MovieListPresenter @Inject constructor(private val movieListUseCase: MovieListUseCase,
+                                             schedulerProvider: SchedulerProvider) :
+        BasePresenter<MovieListContract.View>(schedulerProvider), MovieListContract.UserActionListener {
     override fun getMovieList() {
         view?.showLoading()
         addDisposable(movieListUseCase.getMovieList()
@@ -19,7 +21,7 @@ class MovieListPresenter @Inject constructor(private val movieListUseCase: Movie
                     view?.hideLoading()
                 }, { _ ->
                     view?.hideLoading()
-                    view?.showMessage("Cannot get Detail Movie")
+                    view?.showError()
                 }))
     }
 

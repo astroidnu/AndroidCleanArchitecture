@@ -5,7 +5,9 @@ import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.scoproject.androidcleanarchitecture.data.model.response.MovieList
 import com.scoproject.androidcleanarchitecture.domain.movielist.MovieListUseCase
+import com.scoproject.weatherapp.util.TestSchedulerProvider
 import io.reactivex.Observable
+import io.reactivex.schedulers.TestScheduler
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -19,18 +21,21 @@ class MovieListPresenterTest {
     private var useCase = mock<MovieListUseCase>()
     private val mView: MovieListContract.View = mock()
 
-    private lateinit var mPresenter : MovieListPresenter
+    private lateinit var mTestScheduler: TestScheduler
+    private lateinit var mPresenter: MovieListPresenter
 
     @Before
-    fun setup(){
+    fun setup() {
         useCase = mock()
-        mPresenter = MovieListPresenter(useCase)
+        mTestScheduler = TestScheduler()
+        val testSchedulerProvider = TestSchedulerProvider(mTestScheduler)
+        mPresenter = MovieListPresenter(useCase,testSchedulerProvider)
         mPresenter.attachView(mView)
     }
 
     @Test
-    fun verifyGetMovieListReturnSuccessResponse(){
-        val response : List<MovieList.Result> = mock()
+    fun verifyGetMovieListReturnSuccessResponse() {
+        val response: List<MovieList.Result> = mock()
 
         doReturn(Observable.just(response))
                 .`when`(useCase)
@@ -44,7 +49,7 @@ class MovieListPresenterTest {
     }
 
     @Test
-    fun verifyGetMovieListReturnErrorResponse(){
+    fun verifyGetMovieListReturnErrorResponse() {
         doReturn(Observable.just(""))
                 .`when`(useCase)
                 .getMovieList()
@@ -53,7 +58,7 @@ class MovieListPresenterTest {
 
         verify(mView).showLoading()
         verify(mView).hideLoading()
-        verify(mView).showMessage("java.lang.String cannot be cast to java.util.List")
+        verify(mView).showError()
     }
 
     @After
