@@ -1,9 +1,10 @@
-package com.scoproject.androidcleanarchitecture.external
+package com.scoproject.androidcleanarchitecture.external.adapter
 
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
+import com.scoproject.androidcleanarchitecture.external.inflate
 
 abstract class AbstractAdapter<ITEM> constructor(protected var itemList: List<ITEM>
                                                  , private val layoutResId: Int)

@@ -1,4 +1,4 @@
-package com.scoproject.androidcleanarchitecture.external
+package com.scoproject.androidcleanarchitecture.external.adapter
 
 import android.support.v7.util.DiffUtil
 

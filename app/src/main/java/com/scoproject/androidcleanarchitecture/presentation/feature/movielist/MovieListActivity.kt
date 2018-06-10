@@ -6,7 +6,7 @@ import android.view.View
 import com.scoproject.androidcleanarchitecture.R
 import com.scoproject.androidcleanarchitecture.data.model.response.MovieList
 import com.scoproject.androidcleanarchitecture.external.loadUriImage
-import com.scoproject.androidcleanarchitecture.external.setUp
+import com.scoproject.androidcleanarchitecture.external.adapter.setUp
 import com.scoproject.androidcleanarchitecture.external.showSnackBar
 import com.scoproject.androidcleanarchitecture.presentation.ui.base.activity.BaseActivity
 import dagger.android.AndroidInjection

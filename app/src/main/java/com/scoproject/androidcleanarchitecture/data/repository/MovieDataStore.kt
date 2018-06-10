@@ -17,12 +17,12 @@ class MovieDataStore @Inject constructor(private val service: RestService, val s
     override fun fetchMovies(): Observable<MovieList.Response> {
         return service.getPopularMovie()
                 .subscribeOn(scheduler.io())
-                .observeOn(scheduler.ui())
+                .observeOn(scheduler.mainThread())
     }
 
     override fun fetchDetailMovie(movieId :String): Observable<MovieDetail.Response> {
         return service.getMovieDetail(movieId)
                 .subscribeOn(scheduler.io())
-                .observeOn(scheduler.ui())
+                .observeOn(scheduler.mainThread())
     }
 }
