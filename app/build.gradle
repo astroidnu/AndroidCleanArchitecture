@@ -104,8 +104,4 @@ dependencies {
     //Image Loader
     implementation glide
     kapt glideCompiler
-
-    implementation 'io.supercharge:shimmerlayout:2.1.0'
-
-
 }
