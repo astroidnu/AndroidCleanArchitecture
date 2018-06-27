@@ -7,7 +7,9 @@ import io.reactivex.schedulers.TestScheduler
 
 
 class TestSchedulerProvider constructor(private val testScheduler: TestScheduler) : SchedulerProvider {
+
     override fun ui(): Scheduler = testScheduler
     override fun computation(): Scheduler = testScheduler
     override fun io(): Scheduler = testScheduler
+    override fun mainThread(): Scheduler = testScheduler
 }
