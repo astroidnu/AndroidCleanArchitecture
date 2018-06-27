@@ -1,3 +1,5 @@
+![alt text](https://github.com/astroidnu/AndroidCleanArchitecture/blob/master/assets/clean_architecture.png)
+
 # AndroidCleanArchitecture
 This is sample project for android clean architecture with MVP Pattern Concept
 
